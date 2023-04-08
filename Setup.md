@@ -121,19 +121,19 @@ Once you're done you'll have a cool looking cli bar like this:
 
 1. Use Ligatures
 
-**iTerm > Settings > Profiles > *Text*
+**iTerm > Settings > Profiles >** ***Text***
 
 checkmark *Use ligatures*
 
 2. Color Scheme
 
-**iTerm > Settings > Profile > *Colors*
+**iTerm > Settings > Profile >** ***Colors***
 
 Click the *Color Presets...* dropdown and select *Solarized Dark*
 
 3. Transparency
 
-**iTerm > Settings > Profiles > *Window*
+**iTerm > Settings > Profiles >** ***Window***
 
 Set *Transparency* to 5
 
