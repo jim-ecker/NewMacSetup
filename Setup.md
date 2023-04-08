@@ -49,3 +49,19 @@ brew install --cask iterm2
 At first its going to be boring like this
 
 ![New Install of iTerm](https://github.com/jim-ecker/NewMacSetup/blob/main/images/iterm_new.png "New Install of iTerm")
+
+Let's make it look better
+
+## Oh-My-ZSH
+
+Install Oh My ZSH
+
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+When it's done you'll see something like this
+
+![New Install of Oh My ZSH](https://github.com/jim-ecker/NewMacSetup/blob/main/images/ohmyzsh_install.png "New Install of Oh My ZSH")
+
+
