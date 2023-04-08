@@ -37,3 +37,11 @@ then copy/paste this command:
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
+
+# iTerm
+
+Install iTerm using Homebrew
+
+```bash
+brew install --cask iterm2
+```
