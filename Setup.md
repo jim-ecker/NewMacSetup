@@ -117,4 +117,23 @@ Once you're done you'll have a cool looking cli bar like this:
 
 ![Powerlevel10k bar](https://github.com/jim-ecker/NewMacSetup/blob/main/images/init_done.png "Powerlevel10k Bar")
 
+## iTerm Preferences
+
+1. Use Ligatures
+
+**iTerm > Settings > Profiles > *Text*
+
+checkmark *Use ligatures*
+
+2. Color Scheme
+
+**iTerm > Settings > Profile > *Colors*
+
+Click the *Color Presets...* dropdown and select *Solarized Dark*
+
+3. Transparency
+
+**iTerm > Settings > Profiles > *Window*
+
+Set *Transparency* to 5
 
