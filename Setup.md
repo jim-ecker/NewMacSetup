@@ -127,7 +127,7 @@ checkmark *Use ligatures*
 
 2. Color Scheme
 
-**iTerm > Settings > Profile >** ***Colors***
+**iTerm > Settings > Profiles >** ***Colors***
 
 Click the *Color Presets...* dropdown and select *Solarized Dark*
 
