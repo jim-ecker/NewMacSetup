@@ -137,3 +137,16 @@ Click the *Color Presets...* dropdown and select *Solarized Dark*
 
 Set *Transparency* to 5
 
+# Apps
+
+## [Exa](https://github.com/ogham/exa)
+
+```zsh
+brew install exa
+```
+
+Then alias ls to point to exa now. Add this to your `.zshrc` file:
+
+```zsh
+alias ls=”exa --icons -lh”
+```
