@@ -113,4 +113,8 @@ Restart your terminal. Once you do Powerlevel10k's installation wizard will star
 
 ![Powerlevel10k Init](https://github.com/jim-ecker/NewMacSetup/blob/main/images/powerlevel10k_init.png "Powerlevel10k Init")
 
+Once you're done you'll have a cool looking cli bar like this:
+
+![Powerlevel10k bar](https://github.com/jim-ecker/NewMacSetup/blob/main/images/init_done.png "Powerlevel10k Bar")
+
 
