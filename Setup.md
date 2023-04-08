@@ -100,3 +100,17 @@ brew install zsh-syntax-highlighting
 ```zsh
   source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
+
+#### [powerlevel10k](https://github.com/romkatv/powerlevel10k) ####
+
+Install Powerlevel10k to customize the command line bar
+
+```zsh
+brew install romkatv/powerlevel10k/powerlevel10k
+echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
+```
+Restart your terminal. Once you do Powerlevel10k's installation wizard will start. Step through it to set up your customization
+
+![Powerlevel10k Init](https://github.com/jim-ecker/NewMacSetup/blob/main/images/powerlevel10k_init.png "Powerlevel10k Init")
+
+
