@@ -1,3 +1,15 @@
+- [Mambaforge](#mambaforge)
+- [Homebrew](#homebrew)
+- [iTerm](#iterm)
+  * [Oh-My-ZSH](#oh-my-zsh)
+    + [Oh My ZSH Plugins](#oh-my-zsh-plugins)
+      - [zsh-autosuggestions](#-zsh-autosuggestions--https---githubcom-zsh-users-zsh-autosuggestions-)
+      - [zsh-syntax-highlighting](#-zsh-syntax-highlighting--https---githubcom-zsh-users-zsh-syntax-highlighting-)
+      - [powerlevel10k](#-powerlevel10k--https---githubcom-romkatv-powerlevel10k-)
+  * [iTerm Preferences](#iterm-preferences)
+- [Apps](#apps)
+  * [Exa](#-exa--https---githubcom-ogham-exa-)
+
 # Mambaforge
 
 Install Mambaforge. Make sure you get the installer for Apple Silicon
