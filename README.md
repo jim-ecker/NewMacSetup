@@ -27,6 +27,14 @@ then copy/paste this command:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+Homebrew will tell you to use these commands to add it to your PATH but it's easy to miss so here they are
+
+```zsh
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/[username]/.zprofile
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
 # iTerm
 
 Install iTerm using Homebrew
