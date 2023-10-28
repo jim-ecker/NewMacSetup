@@ -151,14 +151,14 @@ Set *Transparency* to 5
 
 # Apps
 
-## [Exa](https://github.com/ogham/exa)
+## [Eza](https://github.com/eza-community/eza)
 
 ```zsh
-brew install exa
+brew install eza
 ```
 
 Then alias ls to point to exa now. Add this to your `.zshrc` file:
 
 ```zsh
-alias ls=”exa --icons -lh”
+alias ls=”eza --icons -lh”
 ```
