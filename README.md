@@ -8,7 +8,7 @@
       - [powerlevel10k](#-powerlevel10k--https---githubcom-romkatv-powerlevel10k-)
   * [iTerm Preferences](#iterm-preferences)
 - [Apps](#apps)
-  * [EZA]
+  * [EZA](#eza)
 
 # Mambaforge
 
