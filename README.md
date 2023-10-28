@@ -7,7 +7,8 @@
       - [powerlevel10k](#-powerlevel10k--https---githubcom-romkatv-powerlevel10k-)
   * [iTerm Preferences](#iterm-preferences)
 - [Apps](#apps)
-  * [EZA](#eza)
+  * [eza](#eza)
+  * [bat](#bat)
 
 # Homebrew
 
@@ -136,7 +137,7 @@ Set *Transparency* to 5
 
 # Apps
 
-## [Eza](https://github.com/eza-community/eza)
+## [eza](https://github.com/eza-community/eza)
 
 ---
 
