@@ -30,7 +30,7 @@ then copy/paste this command:
 Homebrew will tell you to use these commands to add it to your PATH but it's easy to miss so here they are
 
 ```zsh
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/[username]/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
