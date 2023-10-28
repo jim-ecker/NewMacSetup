@@ -148,6 +148,10 @@ Then alias ls to point to exa now. Add this to your `.zshrc` file:
 
 ```zsh
 alias ls="eza --icons -lh"
+```
 
+add an alias to print the directory map as a tree with icons
+
+```zsh
 alias tree="eza --icons --tree"
 ```
