@@ -163,3 +163,23 @@ add an alias to print the directory map as a tree with icons
 ```zsh
 alias tree="eza --icons --tree"
 ```
+
+## [bat](https://github.com/sharkdp/bat)
+
+---
+
+A *cat(1)* clone with syntax highlighting and Git integration.
+
+*bat* allows you to *cat(1)* files with syntax highlighting and line numbering, which makes reading code on cli on the fly much easier
+
+---
+
+```zsh
+brew install bat
+```
+
+I like to alias bat so that I can envoke it using "cat"
+
+```zsh
+alias cat="bat"
+```
