@@ -9,7 +9,7 @@
 - [Apps](#apps)
   * [eza](#eza)
   * [bat](#bat)
-
+    
 # Homebrew
 
 You need a package manager.
@@ -183,4 +183,18 @@ I like to alias bat so that I can envoke it using "cat"
 
 ```zsh
 alias cat="bat"
+```
+
+## [Midnight Commander](https://github.com/MidnightCommander/mc)
+
+---
+
+**Midnight Commander** allows you to manage files while making the most of
+your screen and giving you a clear representation of the filesystem, yet
+it's simple enough to be run over a telnet or ssh session.
+
+---
+
+```zsh
+brew install midgnight-commander
 ```
