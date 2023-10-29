@@ -9,7 +9,7 @@
 - [Apps](#apps)
   * [eza](#eza)
   * [bat](#bat)
-    
+  * [Midnight Commander](#midnight-commander)
 # Homebrew
 
 You need a package manager.
