@@ -196,5 +196,5 @@ it's simple enough to be run over a telnet or ssh session.
 ---
 
 ```zsh
-brew install midgnight-commander
+brew install midnight-commander
 ```
