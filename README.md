@@ -26,12 +26,23 @@ In **System Preferences** > **Keyboard**, in the **Text Input** section, click t
 
 ## Siri
 
+### Disable Voice Responses
+
 In **System Preferences** > **Siri & Spotlight**, click the **Siri Responses...** button
 
 - Disable
   - Voice Feedback
  
 ![Siri Voice Feedback](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Siri%20Voice%20Feedback.png)
+
+### Enable **Type to Siri**
+
+In **System Preferences** > **Accessibility**, in the **General** section, click **Siri**
+
+- Enable
+  - Type to Siri
+ 
+![Type to Siri](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Type%20to%20Siri.png)
 
 # Homebrew
 
