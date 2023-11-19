@@ -62,12 +62,12 @@ In **System Preferences** > **Desktop & Dock**
 
 In **Finder** > **Settings...** > **General**
 
-In **Show these items on the desktop:
+In **Show these items on the desktop**:
 
 - Enable
   - Hard disks
 
-In **New Finder windows show:
+In **New Finder windows show**:
 
 - Change
   - Downloads
