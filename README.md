@@ -4,7 +4,7 @@
     - [Disable Voice Responses](#disable-voice-responses)
     - [Enable Type to Siri](#enable-type-to-siri)
   - [Dock](#dock)
-  - [Finder Preferences](#finder-preferences)
+- [Finder Preferences](#finder-preferences)
 - [Homebrew](#homebrew)
 - [iTerm](#iterm)
   * [Oh-My-ZSH](#oh-my-zsh)
