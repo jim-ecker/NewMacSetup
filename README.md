@@ -1,3 +1,4 @@
+- [System Preferences](#system-preferences)
 - [Homebrew](#homebrew)
 - [iTerm](#iterm)
   * [Oh-My-ZSH](#oh-my-zsh)
