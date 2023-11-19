@@ -44,6 +44,20 @@ In **System Preferences** > **Accessibility**, in the **General** section, click
  
 ![Type to Siri](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Type%20to%20Siri.png)
 
+## Dock
+
+In **System Preferences** > **Desktop & Dock**
+
+- Change
+  - Minimize Windows Using
+    - Scale Effect
+- Enable
+  - Automatically hide and show the Dock
+- Disable
+  - Show suggested and recent apps in Dock
+ 
+![Dock Settings](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Dock%20Settings.png)
+
 # Homebrew
 
 You need a package manager.
