@@ -73,7 +73,7 @@ In **New Finder windows show**:
   - Downloads
     - You will have to select **Other...** and then select **Downloads** from the directory selector
 
-![Finder General Settings](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Finder%20General%20Settings.png)
+![Finder General Settings](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Finder%20Settings%20General.png)
 
 In **Finder** > **Settings...** > **Sidebar**
 
