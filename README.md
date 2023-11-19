@@ -95,6 +95,18 @@ In **Finder** > **Settings...** > **Advanced**
 
 ![Finder Advanced Settings](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Finder%20Advanced%20Settings.png)
 
+In **Finder** > **View** > **Customize Toolbar...**
+
+Click and drag **Airdrop** to the **Toolbar** section of the **Finder** window
+
+![Finder Airdrop](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Finder%20Airdrop.gif)
+
+This will allow you to highlight a file, then click the **Airdrop** icon in the **Finder** **Toolbar** to bring up an **Airdrop** dialog
+
+![Finder Airdrop Demo](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Finder%20Airdrop%20Demo.gif)
+
+This is a much better way to **Airdrop** than doing it through the **Finder** **Sidebar**
+
 # Homebrew
 
 You need a package manager.
