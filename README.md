@@ -60,6 +60,14 @@ In **System Preferences** > **Desktop & Dock**
 
 # Finder Preferences
 
+In **Finder** > **View**
+
+- Select
+  - Show Path Bar
+  - Show Status Bar
+ 
+![Finder View](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Finder%20View.gif)
+
 In **Finder** > **Settings...** > **General**
 
 In **Show these items on the desktop**:
