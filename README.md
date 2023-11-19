@@ -58,6 +58,43 @@ In **System Preferences** > **Desktop & Dock**
  
 ![Dock Settings](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Dock%20Settings.png)
 
+# Finder Preferences
+
+In **Finder** > **Settings...** > **General**
+
+In **Show these items on the desktop:
+
+- Enable
+  - Hard disks
+
+In **New Finder windows show:
+
+- Change
+  - Downloads
+    - You will have to select **Other...** and then select **Downloads** from the directory selector
+
+![Finder General Settings](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Finder%20General%20Settings.png)
+
+In **Finder** > **Settings...** > **Sidebar**
+
+- Enable
+  - In the **Favorites** section
+    - your home folder
+- Disable
+  - In the **Favorites** section
+    - Recents
+  - In the **Tags** section
+    - Recent Tags
+
+![Finder Sidebar Settings](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Finder%20Sidebar%20Settings.png)
+
+In **Finder** > **Settings...** > **Advanced**
+
+- Enable
+  - Show all filename extensions
+
+![Finder Advanced Settings](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Finder%20Advanced%20Settings.png)
+
 # Homebrew
 
 You need a package manager.
