@@ -10,6 +10,29 @@
   * [eza](#eza)
   * [bat](#bat)
   * [Midnight Commander](#midnight-commander)
+ 
+# System Preferences
+
+## Keyboard
+
+In **System Preferences** > **Keyboard**, in the **Text Input** section, click the **Edit...** button
+
+- Disable
+  - Correct spelling automatically
+  - Capitalize words automatically
+  - Add period with double-space
+ 
+![Keyboard Input Settings](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Keyboard%20Input%20Settings.png)
+
+## Siri
+
+In **System Preferences** > **Siri & Spotlight**, click the **Siri Responses...** button
+
+- Disable
+  - Voice Feedback
+ 
+![Siri Voice Feedback](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Siri%20Voice%20Feedback.png)
+
 # Homebrew
 
 You need a package manager.
