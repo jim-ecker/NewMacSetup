@@ -458,92 +458,152 @@ Ghostty may render these as overlays rather than inline depending on protocol.
 
 ---
 
-# Modern Neovim Configuration (Ghostty + Powerlevel10k + Nerd Font)
+## Modern Neovim Setup (Step-by-Step for macOS)
 
-This is a complete, modern Neovim setup tailored for:
-
-- GPU-accelerated terminal: **Ghostty**
-- Nerd Font icon support
-- Powerlevel10k prompt
-- Lua-based plugin configuration via **Lazy.nvim**
-- Gruvbox theme, Telescope, Tree-sitter, LSP, and file explorer
+This guide walks you through installing and configuring Neovim with Lazy.nvim, Gruvbox, Treesitter, LSP, file explorer, and fuzzy finder — all tuned for use with Ghostty and Powerlevel10k.
 
 ---
 
-## Features Included
+### Step-by-Step Instructions
 
-- [x] Lazy.nvim plugin manager
-- [x] Gruvbox color theme with truecolor
-- [x] Telescope fuzzy finder (`<leader>ff`, `<leader>fg`, etc.)
-- [x] Treesitter syntax highlighting
-- [x] Built-in LSP with Mason (Lua, Bash, Python)
-- [x] Auto-completion with `nvim-cmp`
-- [x] Statusline with `lualine.nvim`
-- [x] Git status via `gitsigns.nvim`
-- [x] Nerd Font + Web Dev Icons
-- [x] Modern file explorer with `nvim-tree.lua` (`<leader>e`)
+#### 1. Install Neovim
 
----
-
-## File Structure
-
-Your config lives in:
-
+```bash
+brew install neovim
 ```
-~/.config/nvim/
-├── init.lua
-└── lua/
-    └── core/
-        ├── options.lua
-        ├── keymaps.lua
-        ├── plugins.lua
-        └── lsp.lua
+
+Verify install:
+
+```bash
+nvim --version
 ```
 
 ---
 
-## Key Bindings
+#### 2. Set Up Config Directory
 
-| Key Combo      | Action               |
-|----------------|----------------------|
-| `<leader>ff`   | Find files           |
-| `<leader>fg`   | Live grep            |
-| `<leader>fb`   | List buffers         |
-| `<leader>fh`   | Help tags            |
-| `<leader>e`    | Toggle file explorer |
+Create Neovim config folders:
 
-(`leader` is set to **space**)
+```bash
+mkdir -p ~/.config/nvim/lua/core
+```
 
 ---
 
-## Setup Notes
+#### 3. Configure `init.lua`
 
-- **Leader key** is set at the top of your config:
-  ```lua
-  vim.g.mapleader = " "
-  ```
-- **netrw is disabled** to avoid conflict with `nvim-tree`:
-  ```lua
-  vim.g.loaded_netrw = 1
-  vim.g.loaded_netrwPlugin = 1
-  ```
-- **Auto-launch file tree** when starting Neovim in a folder:
-  ```lua
-  if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
-    vim.cmd.cd(vim.fn.argv(0))
-    require("nvim-tree.api").tree.open()
-  end
-  ```
+Create `~/.config/nvim/init.lua` and paste:
+
+```lua
+require("core.options")
+require("core.keymaps")
+require("core.plugins")
+```
 
 ---
 
-## Tips
+#### 4. `options.lua`: Basic Settings
 
-- Run `:Lazy` to manage plugins
-- Run `:Mason` to install/manage LSPs
-- Use `:map <leader>` to list active leader keymaps
-- If key mappings don’t work, check for null bytes (`^@`) with `nvim -b`
+Create `~/.config/nvim/lua/core/options.lua`:
+
+```lua
+vim.opt.relativenumber = true
+vim.opt.number = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.termguicolors = true
+vim.opt.mouse = "a"
+vim.opt.clipboard = "unnamedplus"
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+```
 
 ---
 
-Happy hacking in Neovim + Ghostty!
+#### 5. `keymaps.lua`: Custom Shortcuts
+
+Create `~/.config/nvim/lua/core/keymaps.lua`:
+
+```lua
+vim.g.mapleader = " "
+local keymap = vim.keymap.set
+
+keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files" })
+keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live Grep" })
+keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Buffers" })
+keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help Tags" })
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle File Tree" })
+```
+
+---
+
+#### 6. `plugins.lua`: Install Lazy.nvim Plugins
+
+Create `~/.config/nvim/lua/core/plugins.lua`:
+
+```lua
+local lazy = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazy) then
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", lazy })
+end
+vim.opt.rtp:prepend(lazy)
+
+require("lazy").setup({
+  { "ellisonleao/gruvbox.nvim" },
+  { "nvim-lualine/lualine.nvim" },
+  { "nvim-tree/nvim-tree.lua" },
+  { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  { "neovim/nvim-lspconfig" },
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
+  { "hrsh7th/nvim-cmp" },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "L3MON4D3/LuaSnip" },
+  { "lewis6991/gitsigns.nvim" },
+  { "nvim-tree/nvim-web-devicons" },
+})
+```
+
+---
+
+#### 7. Enable Gruvbox Theme
+
+Add to `~/.config/nvim/init.lua`:
+
+```lua
+vim.cmd("colorscheme gruvbox")
+vim.opt.background = "dark"
+```
+
+---
+
+#### 8. Launch Neovim
+
+Start Neovim:
+
+```bash
+nvim
+```
+
+Then run:
+
+```vim
+:Lazy sync
+:Mason
+```
+
+Install your LSPs (e.g. `pyright`, `lua_ls`).
+
+---
+
+#### Verify Setup
+
+- `<Space>e` → File tree
+- `<Space>ff` → Fuzzy finder
+- `:TSInstall all` → Treesitter parsers
+- `:checkhealth` → Troubleshooting
+
+---
+
