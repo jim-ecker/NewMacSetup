@@ -325,3 +325,92 @@ it's simple enough to be run over a telnet or ssh session.
 ```zsh
 brew install midnight-commander
 ```
+# Modern Neovim Configuration (Ghostty + Powerlevel10k + Nerd Font)
+
+This is a complete, modern Neovim setup tailored for:
+
+- GPU-accelerated terminal: **Ghostty**
+- Nerd Font icon support
+- Powerlevel10k prompt
+- Lua-based plugin configuration via **Lazy.nvim**
+- Gruvbox theme, Telescope, Tree-sitter, LSP, and file explorer
+
+---
+
+## Features Included
+
+- [x] Lazy.nvim plugin manager
+- [x] Gruvbox color theme with truecolor
+- [x] Telescope fuzzy finder (`<leader>ff`, `<leader>fg`, etc.)
+- [x] Treesitter syntax highlighting
+- [x] Built-in LSP with Mason (Lua, Bash, Python)
+- [x] Auto-completion with `nvim-cmp`
+- [x] Statusline with `lualine.nvim`
+- [x] Git status via `gitsigns.nvim`
+- [x] Nerd Font + Web Dev Icons
+- [x] Modern file explorer with `nvim-tree.lua` (`<leader>e`)
+
+---
+
+## File Structure
+
+Your config lives in:
+
+```
+~/.config/nvim/
+├── init.lua
+└── lua/
+    └── core/
+        ├── options.lua
+        ├── keymaps.lua
+        ├── plugins.lua
+        └── lsp.lua
+```
+
+---
+
+## Key Bindings
+
+| Key Combo      | Action               |
+|----------------|----------------------|
+| `<leader>ff`   | Find files           |
+| `<leader>fg`   | Live grep            |
+| `<leader>fb`   | List buffers         |
+| `<leader>fh`   | Help tags            |
+| `<leader>e`    | Toggle file explorer |
+
+(`leader` is set to **space**)
+
+---
+
+## Setup Notes
+
+- **Leader key** is set at the top of your config:
+  ```lua
+  vim.g.mapleader = " "
+  ```
+- **netrw is disabled** to avoid conflict with `nvim-tree`:
+  ```lua
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+  ```
+- **Auto-launch file tree** when starting Neovim in a folder:
+  ```lua
+  if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
+    vim.cmd.cd(vim.fn.argv(0))
+    require("nvim-tree.api").tree.open()
+  end
+  ```
+
+---
+
+## Tips
+
+- Run `:Lazy` to manage plugins
+- Run `:Mason` to install/manage LSPs
+- Use `:map <leader>` to list active leader keymaps
+- If key mappings don’t work, check for null bytes (`^@`) with `nvim -b`
+
+---
+
+Happy hacking in Neovim + Ghostty!
