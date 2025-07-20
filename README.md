@@ -241,6 +241,56 @@ Then HOME is mapped to `run-help`. You can test by typing a command and pressing
 
 ---
 
+## Fix HOME and END Keys in Zsh/Vim
+
+On macOS and some terminals (including Ghostty), the HOME and END keys may not work properly in Zsh or Vim. Here's how to fix them.
+
+### 1. Check Current Bindings
+
+Run this in your terminal:
+
+```bash
+bindkey | grep '\[H'
+```
+
+If you see:
+
+```bash
+"^[H" run-help
+```
+
+Then `HOME` is incorrectly mapped to Zsh’s `run-help`.
+
+### 2. Remap Keys in `.zshrc`
+
+Add these lines to your `~/.zshrc`:
+
+```zsh
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+```
+
+Then reload your shell:
+
+```bash
+source ~/.zshrc
+```
+
+### 3. Test It
+
+- Type a command
+- Press `HOME` → should jump to the beginning of the line
+- Press `END`  → should jump to the end of the line
+
+### Vim Note
+
+In Vim, HOME and END typically just work, but if not, you can add these to your `.vimrc` or `init.vim`:
+
+```vim
+map <Esc>[H <Home>
+map <Esc>[F <End>
+```
+
 ### 5. Powerlevel10k Zsh Prompt
 
 Install Powerlevel10k with Oh My Zsh:
