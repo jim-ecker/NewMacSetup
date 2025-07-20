@@ -326,33 +326,51 @@ it's simple enough to be run over a telnet or ssh session.
 brew install midnight-commander
 ```
 
-## ✅ Terminal: Ghostty
+# Ghostty Terminal Setup (with Powerlevel10k + Nerd Font)
 
-Ghostty is a GPU-accelerated terminal emulator that supports:
-
-- Truecolor and transparency
-- Inline images (Kitty protocol, iTerm2)
-- Fast font rendering
-- Configurable keybindings
+This guide walks you through configuring Ghostty with Nerd Fonts, Powerlevel10k, keybindings, and inline image support.
 
 ---
 
-## 📂 Config Location
+## ✅ Step-by-Step Setup
 
-Ghostty looks for config files in:
+### 1. Install Ghostty (macOS)
 
-- macOS:
-  ```
-  ~/Library/Application Support/ghostty/config
-  ```
-- Unix (alternative):
-  ```
-  ~/.config/ghostty/config
-  ```
+Download Ghostty from the official site:
+
+```bash
+brew install --no-quarantine --cask ghostty
+```
+
+Or download the `.app` from: https://github.com/ghostty-org/ghostty
 
 ---
 
-## 🎨 Sample `config` File
+### 2. Install a Nerd Font
+
+Powerlevel10k and dev icons need a patched Nerd Font:
+
+```bash
+brew tap homebrew/cask-fonts
+brew install --cask font-meslo-lg-nerd-font
+```
+
+In Ghostty preferences:
+
+- Set **Font Family** to: `MesloLGS Nerd Font Mono`
+
+---
+
+### 3. Create a Ghostty Config File
+
+Create the file:
+
+```bash
+mkdir -p ~/.config/ghostty
+vim ~/.config/ghostty/config
+```
+
+Paste this configuration:
 
 ```ini
 font-family = MesloLGS Nerd Font Mono
@@ -365,71 +383,78 @@ key home = "\x1b[H"
 key end  = "\x1b[F"
 ```
 
----
-
-## ⌨️ Notes on Key Bindings
-
-- You must **save the file with proper permissions**.
-- If `E212: Can't open file for writing` occurs in Vim:
-  - You likely opened the wrong path or lacked write permission.
-  - Use `~/.config/ghostty/config` if `Library/...` is read-only.
+Save and restart Ghostty.
 
 ---
 
-## 🔧 Home / End Key Fix
+### 4. Fix HOME and END Keys in Zsh/Vim
 
-By default, `Home` and `End` may not behave correctly in Zsh/Vim. The fix:
-
-```ini
-key home = "\x1b[H"
-key end  = "\x1b[F"
-```
-
-You can test key behavior with:
+Verify the keybindings:
 
 ```bash
 bindkey | grep '\[H'
 ```
 
-And test `run-help` functionality in Zsh by typing a command and pressing `Alt+h`.
+If you see this:
+```
+"^[H" run-help
+```
+
+Then HOME is mapped to `run-help`. You can test by typing a command and pressing `Alt+h` to get help.
 
 ---
 
-## 🧪 Inline Image Tools (Kitty / iTerm2)
+### 5. Powerlevel10k Zsh Prompt
 
-- `chafa`: terminal-based image viewer using ANSI art
-- `viu`: displays inline images with truecolor
-- `icat kitten`: supports inline images via Kitty protocol
+Install Powerlevel10k with Oh My Zsh:
 
-Ghostty supports **Kitty image protocol**, but may render images as overlays instead of inline text.
+```bash
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+```
 
-To resize to terminal:
+In `~/.zshrc`, set:
+
+```bash
+ZSH_THEME="powerlevel10k/powerlevel10k"
+```
+
+Then reload:
+
+```bash
+source ~/.zshrc
+```
+
+---
+
+### 6. Inline Image Tools
+
+Ghostty supports **Kitty protocol** for inline images. Try:
+
+```bash
+brew install chafa viu
+```
+
+Render images:
 
 ```bash
 chafa --symbols=block --colors=16 --size=$(tput cols)x$(tput lines) image.jpg
 ```
 
-To avoid color when testing:
+To test minimal color output:
 
 ```bash
 chafa --symbols=ascii --dither=none --colors=2 image.jpg
 ```
 
-Note: `--colors=2` may still render color if terminal supports it and `color-space` isn't restricted.
+Ghostty may render these as overlays rather than inline depending on protocol.
 
 ---
 
-## 🔤 Font Recommendation
+### 7. Debugging Tips
 
-- **MesloLGS Nerd Font Mono**  
-  (Perfect for Powerlevel10k, has full icon support.)
-
-Install via:
-
-```bash
-brew tap homebrew/cask-fonts
-brew install --cask font-meslo-lg-nerd-font
-```
+- If HOME/END do nothing: check `~/.config/ghostty/config` for typos or invalid escape codes.
+- If colors don’t render correctly: verify Ghostty uses a theme with truecolor enabled.
+- If images don't render inline: test with `viu` or `chafa` and make sure Kitty protocol is supported.
 
 ---
 
