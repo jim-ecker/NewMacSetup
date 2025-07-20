@@ -163,7 +163,141 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-# iTerm
+# Ghostty Terminal Setup (with Powerlevel10k + Nerd Font)
+
+This guide walks you through configuring Ghostty with Nerd Fonts, Powerlevel10k, keybindings, and inline image support.
+
+---
+
+## ✅ Step-by-Step Setup
+
+### 1. Install Ghostty (macOS)
+
+Download Ghostty from the official site:
+
+```bash
+brew install --no-quarantine --cask ghostty
+```
+
+Or download the `.app` from: https://github.com/ghostty-org/ghostty
+
+---
+
+### 2. Install a Nerd Font
+
+Powerlevel10k and dev icons need a patched Nerd Font:
+
+```bash
+brew tap homebrew/cask-fonts
+brew install --cask font-meslo-lg-nerd-font
+```
+
+In Ghostty preferences:
+
+- Set **Font Family** to: `MesloLGS Nerd Font Mono`
+
+---
+
+### 3. Create a Ghostty Config File
+
+Create the file:
+
+```bash
+mkdir -p ~/.config/ghostty
+vim ~/.config/ghostty/config
+```
+
+Paste this configuration:
+
+```ini
+font-family = MesloLGS Nerd Font Mono
+font-size = 19
+background-opacity = 0.9
+theme = Argonaut
+
+# Fix HOME and END keys
+key home = "\x1b[H"
+key end  = "\x1b[F"
+```
+
+Save and restart Ghostty.
+
+---
+
+### 4. Fix HOME and END Keys in Zsh/Vim
+
+Verify the keybindings:
+
+```bash
+bindkey | grep '\[H'
+```
+
+If you see this:
+```
+"^[H" run-help
+```
+
+Then HOME is mapped to `run-help`. You can test by typing a command and pressing `Alt+h` to get help.
+
+---
+
+### 5. Powerlevel10k Zsh Prompt
+
+Install Powerlevel10k with Oh My Zsh:
+
+```bash
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+```
+
+In `~/.zshrc`, set:
+
+```bash
+ZSH_THEME="powerlevel10k/powerlevel10k"
+```
+
+Then reload:
+
+```bash
+source ~/.zshrc
+```
+
+---
+
+### 6. Inline Image Tools
+
+Ghostty supports **Kitty protocol** for inline images. Try:
+
+```bash
+brew install chafa viu
+```
+
+Render images:
+
+```bash
+chafa --symbols=block --colors=16 --size=$(tput cols)x$(tput lines) image.jpg
+```
+
+To test minimal color output:
+
+```bash
+chafa --symbols=ascii --dither=none --colors=2 image.jpg
+```
+
+Ghostty may render these as overlays rather than inline depending on protocol.
+
+---
+
+### 7. Debugging Tips
+
+- If HOME/END do nothing: check `~/.config/ghostty/config` for typos or invalid escape codes.
+- If colors don’t render correctly: verify Ghostty uses a theme with truecolor enabled.
+- If images don't render inline: test with `viu` or `chafa` and make sure Kitty protocol is supported.
+
+---
+
+
+
+# iTerm (good alternative, what I used to use as my main terminal)
 
 Install iTerm using Homebrew
 
@@ -326,138 +460,26 @@ it's simple enough to be run over a telnet or ssh session.
 brew install midnight-commander
 ```
 
-# Ghostty Terminal Setup (with Powerlevel10k + Nerd Font)
-
-This guide walks you through configuring Ghostty with Nerd Fonts, Powerlevel10k, keybindings, and inline image support.
-
 ---
 
-## ✅ Step-by-Step Setup
+## [Zoxide](https://github.com/ajeetdsouza/zoxide)
 
-### 1. Install Ghostty (macOS)
+zoxide is a smarter cd command, inspired by z and autojump.
 
-Download Ghostty from the official site:
-
-```bash
-brew install --no-quarantine --cask ghostty
-```
-
-Or download the `.app` from: https://github.com/ghostty-org/ghostty
+It remembers which directories you use most frequently, so you can "jump" to them in just a few keystrokes.
+zoxide works on all major shells.
 
 ---
-
-### 2. Install a Nerd Font
-
-Powerlevel10k and dev icons need a patched Nerd Font:
-
-```bash
-brew tap homebrew/cask-fonts
-brew install --cask font-meslo-lg-nerd-font
+```zsh
+brew install zoxide
 ```
-
-In Ghostty preferences:
-
-- Set **Font Family** to: `MesloLGS Nerd Font Mono`
-
 ---
 
-### 3. Create a Ghostty Config File
+then alias zoxide to run when you use cd
 
-Create the file:
-
-```bash
-mkdir -p ~/.config/ghostty
-vim ~/.config/ghostty/config
+```zsh
+alias cd=z
 ```
-
-Paste this configuration:
-
-```ini
-font-family = MesloLGS Nerd Font Mono
-font-size = 19
-background-opacity = 0.9
-theme = Argonaut
-
-# Fix HOME and END keys
-key home = "\x1b[H"
-key end  = "\x1b[F"
-```
-
-Save and restart Ghostty.
-
----
-
-### 4. Fix HOME and END Keys in Zsh/Vim
-
-Verify the keybindings:
-
-```bash
-bindkey | grep '\[H'
-```
-
-If you see this:
-```
-"^[H" run-help
-```
-
-Then HOME is mapped to `run-help`. You can test by typing a command and pressing `Alt+h` to get help.
-
----
-
-### 5. Powerlevel10k Zsh Prompt
-
-Install Powerlevel10k with Oh My Zsh:
-
-```bash
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-```
-
-In `~/.zshrc`, set:
-
-```bash
-ZSH_THEME="powerlevel10k/powerlevel10k"
-```
-
-Then reload:
-
-```bash
-source ~/.zshrc
-```
-
----
-
-### 6. Inline Image Tools
-
-Ghostty supports **Kitty protocol** for inline images. Try:
-
-```bash
-brew install chafa viu
-```
-
-Render images:
-
-```bash
-chafa --symbols=block --colors=16 --size=$(tput cols)x$(tput lines) image.jpg
-```
-
-To test minimal color output:
-
-```bash
-chafa --symbols=ascii --dither=none --colors=2 image.jpg
-```
-
-Ghostty may render these as overlays rather than inline depending on protocol.
-
----
-
-### 7. Debugging Tips
-
-- If HOME/END do nothing: check `~/.config/ghostty/config` for typos or invalid escape codes.
-- If colors don’t render correctly: verify Ghostty uses a theme with truecolor enabled.
-- If images don't render inline: test with `viu` or `chafa` and make sure Kitty protocol is supported.
-
----
-
 ## Modern Neovim Setup (Step-by-Step for macOS)
 
 This guide walks you through installing and configuring Neovim with Lazy.nvim, Gruvbox, Treesitter, LSP, file explorer, and fuzzy finder — all tuned for use with Ghostty and Powerlevel10k.
