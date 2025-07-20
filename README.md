@@ -1,28 +1,5 @@
-- [System Preferences](#system-preferences)
-  - [Keyboard](#keyboard)
-  - [Siri](#siri)
-    - [Disable Voice Responses](#disable-voice-responses)
-    - [Enable Type to Siri](#enable-type-to-siri)
-  - [Dock](#dock)
-- [Finder Preferences](#finder-preferences)
-  - [View](https://github.com/jim-ecker/NewMacSetup/tree/main#view)
-  - [Finder Settings](https://github.com/jim-ecker/NewMacSetup/tree/main#finder-settings)
-    - [General](https://github.com/jim-ecker/NewMacSetup/tree/main#general)
-    - [Sidebar](https://github.com/jim-ecker/NewMacSetup/tree/main#sidebar)
-    - [Advanced](https://github.com/jim-ecker/NewMacSetup/tree/main#advanced)
-- [Homebrew](#homebrew)
-- [iTerm](#iterm)
-  * [Oh-My-ZSH](#oh-my-zsh)
-    + [Oh My ZSH Plugins](#oh-my-zsh-plugins)
-      - [zsh-autosuggestions](#-zsh-autosuggestions--https---githubcom-zsh-users-zsh-autosuggestions-)
-      - [zsh-syntax-highlighting](#-zsh-syntax-highlighting--https---githubcom-zsh-users-zsh-syntax-highlighting-)
-      - [powerlevel10k](#-powerlevel10k--https---githubcom-romkatv-powerlevel10k-)
-  * [iTerm Preferences](#iterm-preferences)
-- [Apps](#apps)
-  * [eza](#eza)
-  * [bat](#bat)
-  * [Midnight Commander](#midnight-commander)
- 
+[TOC](./TOC.md)
+
 # System Preferences
 
 ## Keyboard
