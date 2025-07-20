@@ -325,6 +325,114 @@ it's simple enough to be run over a telnet or ssh session.
 ```zsh
 brew install midnight-commander
 ```
+
+## ✅ Terminal: Ghostty
+
+Ghostty is a GPU-accelerated terminal emulator that supports:
+
+- Truecolor and transparency
+- Inline images (Kitty protocol, iTerm2)
+- Fast font rendering
+- Configurable keybindings
+
+---
+
+## 📂 Config Location
+
+Ghostty looks for config files in:
+
+- macOS:
+  ```
+  ~/Library/Application Support/ghostty/config
+  ```
+- Unix (alternative):
+  ```
+  ~/.config/ghostty/config
+  ```
+
+---
+
+## 🎨 Sample `config` File
+
+```ini
+font-family = MesloLGS Nerd Font Mono
+font-size = 19
+background-opacity = 0.9
+theme = Argonaut
+
+# Fix HOME and END keys
+key home = "\x1b[H"
+key end  = "\x1b[F"
+```
+
+---
+
+## ⌨️ Notes on Key Bindings
+
+- You must **save the file with proper permissions**.
+- If `E212: Can't open file for writing` occurs in Vim:
+  - You likely opened the wrong path or lacked write permission.
+  - Use `~/.config/ghostty/config` if `Library/...` is read-only.
+
+---
+
+## 🔧 Home / End Key Fix
+
+By default, `Home` and `End` may not behave correctly in Zsh/Vim. The fix:
+
+```ini
+key home = "\x1b[H"
+key end  = "\x1b[F"
+```
+
+You can test key behavior with:
+
+```bash
+bindkey | grep '\[H'
+```
+
+And test `run-help` functionality in Zsh by typing a command and pressing `Alt+h`.
+
+---
+
+## 🧪 Inline Image Tools (Kitty / iTerm2)
+
+- `chafa`: terminal-based image viewer using ANSI art
+- `viu`: displays inline images with truecolor
+- `icat kitten`: supports inline images via Kitty protocol
+
+Ghostty supports **Kitty image protocol**, but may render images as overlays instead of inline text.
+
+To resize to terminal:
+
+```bash
+chafa --symbols=block --colors=16 --size=$(tput cols)x$(tput lines) image.jpg
+```
+
+To avoid color when testing:
+
+```bash
+chafa --symbols=ascii --dither=none --colors=2 image.jpg
+```
+
+Note: `--colors=2` may still render color if terminal supports it and `color-space` isn't restricted.
+
+---
+
+## 🔤 Font Recommendation
+
+- **MesloLGS Nerd Font Mono**  
+  (Perfect for Powerlevel10k, has full icon support.)
+
+Install via:
+
+```bash
+brew tap homebrew/cask-fonts
+brew install --cask font-meslo-lg-nerd-font
+```
+
+---
+
 # Modern Neovim Configuration (Ghostty + Powerlevel10k + Nerd Font)
 
 This is a complete, modern Neovim setup tailored for:
