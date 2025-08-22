@@ -351,71 +351,6 @@ At first its going to be boring like this
 
 Let's make it look better
 
-## Oh-My-ZSH
-
-Install Oh My ZSH
-
-```zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-When it's done you'll see something like this
-
-![New Install of Oh My ZSH](https://github.com/jim-ecker/NewMacSetup/blob/main/images/ohmyzsh_install.png "New Install of Oh My ZSH")
-
-### Oh My ZSH Plugins ###
-
-Now we want to install some plugins
-
-#### [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) ####
-
-1. Clone this repository into `$ZSH_CUSTOM/plugins` (by default `~/.oh-my-zsh/custom/plugins`)
-
-    ```zsh
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    ```
-
-2. Add the plugin to the list of plugins for Oh My Zsh to load (inside `~/.zshrc`):
-
-    ```zsh
-    plugins=( 
-        # other plugins...
-        zsh-autosuggestions
-    )
-    ```
-
-3. Start a new terminal session.
-
-#### [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) ####
-
-1. Install via Homebrew
-
-```zsh
-brew install zsh-syntax-highlighting
-```
-
-2. To activate the syntax highlighting, add the following at the end of your `.zshrc`:
-
-```zsh
-  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-```
-
-#### [powerlevel10k](https://github.com/romkatv/powerlevel10k) ####
-
-Install Powerlevel10k to customize the command line bar
-
-```zsh
-brew install powerlevel10k
-echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
-```
-Restart your terminal. Once you do Powerlevel10k's installation wizard will start. Step through it to set up your customization
-
-![Powerlevel10k Init](https://github.com/jim-ecker/NewMacSetup/blob/main/images/powerlevel10k_init.png "Powerlevel10k Init")
-
-Once you're done you'll have a cool looking cli bar like this:
-
-![Powerlevel10k bar](https://github.com/jim-ecker/NewMacSetup/blob/main/images/init_done.png "Powerlevel10k Bar")
-
 ## iTerm Preferences
 
 1. Use Ligatures
@@ -435,6 +370,72 @@ Click the *Color Presets...* dropdown and select *Solarized Dark*
 **iTerm > Settings > Profiles >** ***Window***
 
 Set *Transparency* to 5
+
+# Oh-My-ZSH
+
+Install Oh My ZSH
+
+```zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+When it's done you'll see something like this
+
+![New Install of Oh My ZSH](https://github.com/jim-ecker/NewMacSetup/blob/main/images/ohmyzsh_install.png "New Install of Oh My ZSH")
+
+## Oh My ZSH Plugins ##
+
+Now we want to install some plugins
+
+### [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) ###
+
+1. Clone this repository into `$ZSH_CUSTOM/plugins` (by default `~/.oh-my-zsh/custom/plugins`)
+
+    ```zsh
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    ```
+
+2. Add the plugin to the list of plugins for Oh My Zsh to load (inside `~/.zshrc`):
+
+    ```zsh
+    plugins=( 
+        # other plugins...
+        zsh-autosuggestions
+    )
+    ```
+
+3. Start a new terminal session.
+
+### [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) ###
+
+1. Install via Homebrew
+
+```zsh
+brew install zsh-syntax-highlighting
+```
+
+2. To activate the syntax highlighting, add the following at the end of your `.zshrc`:
+
+```zsh
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+```
+
+### [powerlevel10k](https://github.com/romkatv/powerlevel10k) ###
+
+Install Powerlevel10k to customize the command line bar
+
+```zsh
+brew install powerlevel10k
+echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
+```
+Restart your terminal. Once you do Powerlevel10k's installation wizard will start. Step through it to set up your customization
+
+![Powerlevel10k Init](https://github.com/jim-ecker/NewMacSetup/blob/main/images/powerlevel10k_init.png "Powerlevel10k Init")
+
+Once you're done you'll have a cool looking cli bar like this:
+
+![Powerlevel10k bar](https://github.com/jim-ecker/NewMacSetup/blob/main/images/init_done.png "Powerlevel10k Bar")
+
 
 # Apps
 
