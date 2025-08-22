@@ -22,7 +22,6 @@
     - [Install a Nerd Font](#2-install-a-nerd-font)
     - [Create a Ghostty Config File](#3-create-a-ghostty-config-file)
     - [Fix HOME and END Keys in Zsh/Vim](#4-fix-home-and-end-keys-in-zshvim)
-    - [Powerlevel10k Zsh Prompt](#5-powerlevel10k-zsh-prompt)
     - [Inline Image Tools](#6-inline-image-tools)
     - [Debugging Tips](#7-debugging-tips)
 
