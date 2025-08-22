@@ -237,40 +237,20 @@ Create the file:
 
 ```bash
 mkdir -p ~/.config/ghostty
-vim ~/.config/ghostty/config
+vim ~/Library/Application\ Support/com.mitchellh.ghostty/config
 ```
 
 Paste this configuration:
 
 ```ini
-font-family = MesloLGS Nerd Font Mono
-font-size = 19
-background-opacity = 0.9
-theme = Argonaut
+theme = Hardcore
+shell-integration = zsh
+font-family = "MesloLGS Nerd Font Mono"
+font-size = 14
 
-# Fix HOME and END keys
-key home = "\x1b[H"
-key end  = "\x1b[F"
 ```
 
 Save and restart Ghostty.
-
----
-
-### 4. Fix HOME and END Keys in Zsh/Vim
-
-Verify the keybindings:
-
-```bash
-bindkey | grep '\[H'
-```
-
-If you see this:
-```
-"^[H" run-help
-```
-
-Then HOME is mapped to `run-help`. You can test by typing a command and pressing `Alt+h` to get help.
 
 ---
 
