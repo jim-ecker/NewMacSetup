@@ -27,7 +27,7 @@
 
 - [iTerm (Alternative Terminal)](#iterm-good-alternative-what-i-used-to-use-as-my-main-terminal)
     - [iTerm Preferences](#iterm-preferences)
-    - 
+      
 - [Oh-My-ZSH](#oh-my-zsh)
   - [zsh-autosuggestions](#zsh-autosuggestions)
   - [zsh-syntax-highlighting](#zsh-syntax-highlighting)
