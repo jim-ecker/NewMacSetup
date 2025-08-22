@@ -1,6 +1,6 @@
 ## Table of Contents
 
-- [System Preferences](#system-preferences)
+- [System Settings](#system-settings)
   - [Keyboard](#keyboard)
   - [Siri](#siri)
     - [Disable Voice Responses](#disable-voice-responses)
@@ -50,11 +50,11 @@
   - [Launch Neovim](#8-launch-neovim)
   - [Verify Setup](#verify-setup)
 
-# System Preferences
+# System Settings
 
 ## Keyboard
 
-In **System Preferences** > **Keyboard**, in the **Text Input** section, click the **Edit...** button
+In **System Settings** > **Keyboard**, in the **Text Input** section, click the **Edit...** button
 
 - Disable
   - Correct spelling automatically
@@ -67,7 +67,7 @@ In **System Preferences** > **Keyboard**, in the **Text Input** section, click t
 
 ### Disable Voice Responses
 
-In **System Preferences** > **Siri & Spotlight**, click the **Siri Responses...** button
+In **System Settings** > **Apple Intelligence & Siri**, click the **Siri Responses...** button
 
 - Disable
   - Voice Feedback
@@ -76,16 +76,22 @@ In **System Preferences** > **Siri & Spotlight**, click the **Siri Responses...*
 
 ### Enable **Type to Siri**
 
-In **System Preferences** > **Accessibility**, in the **General** section, click **Siri**
+In **System Settings** > **Apple Intelligence & Siri**, in the **Siri Requests** section
 
-- Enable
-  - Type to Siri
+- Select
+  - Listen For
+    - Off
+   
+- Keyboard Shortcut
+  - Select
+    - Press Either Command Key Twice
+      - press a cmd key twice and enable the text to Siri shortcut
  
 ![Type to Siri](https://github.com/jim-ecker/NewMacSetup/blob/main/images/Type%20to%20Siri.png)
 
 ## Dock
 
-In **System Preferences** > **Desktop & Dock**
+In **System Settings** > **Desktop & Dock**
 
 - Change
   - Minimize Windows Using
