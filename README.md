@@ -406,7 +406,7 @@ Install Powerlevel10k to customize the command line bar
 
 ```zsh
 brew install powerlevel10k
-echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
+echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 ```
 Restart your terminal. Once you do Powerlevel10k's installation wizard will start. Step through it to set up your customization
 
