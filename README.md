@@ -26,11 +26,12 @@
     - [Debugging Tips](#7-debugging-tips)
 
 - [iTerm (Alternative Terminal)](#iterm-good-alternative-what-i-used-to-use-as-my-main-terminal)
-  - [Oh-My-ZSH](#oh-my-zsh)
-    - [zsh-autosuggestions](#zsh-autosuggestions)
-    - [zsh-syntax-highlighting](#zsh-syntax-highlighting)
-    - [powerlevel10k](#powerlevel10k)
-  - [iTerm Preferences](#iterm-preferences)
+    - [iTerm Preferences](#iterm-preferences)
+    - 
+- [Oh-My-ZSH](#oh-my-zsh)
+  - [zsh-autosuggestions](#zsh-autosuggestions)
+  - [zsh-syntax-highlighting](#zsh-syntax-highlighting)
+  - [powerlevel10k](#powerlevel10k)
 
 - [Apps](#apps)
   - [eza](#eza)
