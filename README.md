@@ -304,28 +304,6 @@ map <Esc>[H <Home>
 map <Esc>[F <End>
 ```
 
-### 5. Powerlevel10k Zsh Prompt
-
-Install Powerlevel10k with Oh My Zsh:
-
-```bash
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-```
-
-In `~/.zshrc`, set:
-
-```bash
-ZSH_THEME="powerlevel10k/powerlevel10k"
-```
-
-Then reload:
-
-```bash
-source ~/.zshrc
-```
-
----
-
 ### 6. Inline Image Tools
 
 Ghostty supports **Kitty protocol** for inline images. Try:
