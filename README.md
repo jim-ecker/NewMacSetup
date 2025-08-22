@@ -25,13 +25,13 @@
     - [Inline Image Tools](#6-inline-image-tools)
     - [Debugging Tips](#7-debugging-tips)
 
-- [iTerm (Alternative Terminal)](#iterm-good-alternative-what-i-used-to-use-as-my-main-terminal)
-    - [iTerm Preferences](#iterm-preferences)
-      
 - [Oh-My-ZSH](#oh-my-zsh)
   - [zsh-autosuggestions](#zsh-autosuggestions)
   - [zsh-syntax-highlighting](#zsh-syntax-highlighting)
   - [powerlevel10k](#powerlevel10k)
+ 
+- [iTerm (Alternative Terminal)](#iterm-good-alternative-what-i-used-to-use-as-my-main-terminal)
+    - [iTerm Preferences](#iterm-preferences)
 
 - [Apps](#apps)
   - [eza](#eza)
@@ -336,42 +336,6 @@ Ghostty may render these as overlays rather than inline depending on protocol.
 
 ---
 
-
-
-# iTerm (good alternative, what I used to use as my main terminal)
-
-Install iTerm using Homebrew
-
-```zsh
-brew install --cask iterm2
-```
-
-At first its going to be boring like this
-
-![New Install of iTerm](https://github.com/jim-ecker/NewMacSetup/blob/main/images/iterm_new.png "New Install of iTerm")
-
-Let's make it look better
-
-## iTerm Preferences
-
-1. Use Ligatures
-
-**iTerm > Settings > Profiles >** ***Text***
-
-checkmark *Use ligatures*
-
-2. Color Scheme
-
-**iTerm > Settings > Profiles >** ***Colors***
-
-Click the *Color Presets...* dropdown and select *Solarized Dark*
-
-3. Transparency
-
-**iTerm > Settings > Profiles >** ***Window***
-
-Set *Transparency* to 5
-
 # Oh-My-ZSH
 
 Install Oh My ZSH
@@ -437,6 +401,33 @@ Once you're done you'll have a cool looking cli bar like this:
 
 ![Powerlevel10k bar](https://github.com/jim-ecker/NewMacSetup/blob/main/images/init_done.png "Powerlevel10k Bar")
 
+# iTerm (good alternative, what I used to use as my main terminal)
+
+Install iTerm using Homebrew
+
+```zsh
+brew install --cask iterm2
+```
+
+## iTerm Preferences
+
+1. Use Ligatures
+
+**iTerm > Settings > Profiles >** ***Text***
+
+checkmark *Use ligatures*
+
+2. Color Scheme
+
+**iTerm > Settings > Profiles >** ***Colors***
+
+Click the *Color Presets...* dropdown and select *Solarized Dark*
+
+3. Transparency
+
+**iTerm > Settings > Profiles >** ***Window***
+
+Set *Transparency* to 5
 
 # Apps
 
