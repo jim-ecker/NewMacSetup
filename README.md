@@ -621,6 +621,7 @@ require("lazy").setup({
 })
 
 require("mason").setup()
+require'nvim-tree'.setup()
 ```
 
 ---
