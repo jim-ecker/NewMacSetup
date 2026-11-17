@@ -508,11 +508,14 @@ brew install zoxide
 ```
 ---
 
-then alias zoxide to run when you use cd
+then tell zoxide to use overload cd by writing the command into .zshrc and reloading the shell
 
 ```zsh
-alias cd=z
+echo 'eval "$(zoxide init zsh --cmd cd)"' >> ~/.zshrc
+source ~/.zshrc
 ```
+
+
 ## Modern Neovim Setup (Step-by-Step for macOS)
 
 This setup uses Neovim, Lazy.nvim, Gruvbox, Tree-sitter, Mason/LSP, NvimTree, and Telescope in Ghostty. **Install the command-line dependencies before launching Neovim**; plugin installation alone does not install these tools.
