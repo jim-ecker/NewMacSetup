@@ -515,31 +515,56 @@ alias cd=z
 ```
 ## Modern Neovim Setup (Step-by-Step for macOS)
 
-This guide walks you through installing and configuring Neovim with Lazy.nvim, Gruvbox, Treesitter, LSP, file explorer, and fuzzy finder — all tuned for use with Ghostty and Powerlevel10k.
-
----
+This setup uses Neovim, Lazy.nvim, Gruvbox, Tree-sitter, Mason/LSP, NvimTree, and Telescope in Ghostty. **Install the command-line dependencies before launching Neovim**; plugin installation alone does not install these tools.
 
 ### Step-by-Step Instructions
 
-#### 1. Install Neovim
+#### 1. Install Neovim and its external dependencies
 
-```bash
-brew install neovim
+On Apple Silicon macOS with Homebrew:
+
+```zsh
+brew install neovim tree-sitter-cli ripgrep fd node
 ```
 
-Verify install:
+These packages serve different purposes:
 
-```bash
+| Package | Why it's needed |
+| --- | --- |
+| `neovim` | The editor |
+| `tree-sitter-cli` | Compiles Tree-sitter language parsers; prevents `ENOENT: 'tree-sitter'` |
+| `ripgrep` (`rg`) | Required for Telescope `live_grep` |
+| `fd` | Recommended for Telescope file finding |
+| `node` (includes `npm`) | Required by many Mason-installed language servers and formatters |
+
+Optional tools, depending on which languages you develop in:
+
+```zsh
+brew install wget go rust
+```
+
+Install Java, PHP/Composer, Julia, etc. only if you actually need those ecosystems. Mason's health check reports missing language toolchains even when they are irrelevant to your setup.
+
+Verify the essentials **from a new terminal window**:
+
+```zsh
 nvim --version
+command -v tree-sitter && tree-sitter --version
+command -v rg && rg --version
+command -v fd && fd --version
+node --version
+npm --version
 ```
+
+On a standard Apple Silicon Homebrew setup the binaries are generally under `/opt/homebrew/bin/`. If commands aren't found, confirm the earlier Homebrew section added `eval "$(/opt/homebrew/bin/brew shellenv)"` to `~/.zprofile`, then open a fresh login shell.
+
+> **Homebrew note:** Installing Node can produce a warning about setting the `admin` group on a temporary folder while still successfully installing Node. Check `node --version`, `npm --version`, and `brew doctor` before assuming the install failed. Don't change system directory permissions blindly.
 
 ---
 
 #### 2. Set Up Config Directory
 
-Create Neovim config folders:
-
-```bash
+```zsh
 mkdir -p ~/.config/nvim/lua/core
 ```
 
@@ -547,12 +572,15 @@ mkdir -p ~/.config/nvim/lua/core
 
 #### 3. Configure `init.lua`
 
-Create `~/.config/nvim/init.lua` and paste:
+Create `~/.config/nvim/init.lua`:
 
 ```lua
 require("core.options")
 require("core.keymaps")
 require("core.plugins")
+
+vim.opt.background = "dark"
+vim.cmd.colorscheme("gruvbox")
 ```
 
 ---
@@ -572,7 +600,12 @@ vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- Dedicated Python environment for Neovim's optional Python provider.
+vim.g.python3_host_prog = vim.fn.expand("~/.local/share/nvim-python/bin/python")
 ```
+
+The `python3_host_prog` line assumes you perform step 7 below. If you don't use Python-based Neovim plugins, you can omit it and ignore the provider warning.
 
 ---
 
@@ -588,7 +621,7 @@ keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files"
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live Grep" })
 keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Buffers" })
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help Tags" })
-keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle File Tree" })
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle File Tree" })
 ```
 
 ---
@@ -599,69 +632,122 @@ Create `~/.config/nvim/lua/core/plugins.lua`:
 
 ```lua
 local lazy = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazy) then
+if not (vim.uv or vim.loop).fs_stat(lazy) then
   vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", lazy })
 end
 vim.opt.rtp:prepend(lazy)
 
 require("lazy").setup({
-  { "ellisonleao/gruvbox.nvim" },
+  { "ellisonleao/gruvbox.nvim", lazy = false, priority = 1000 },
   { "nvim-lualine/lualine.nvim" },
-  { "nvim-tree/nvim-tree.lua" },
+  { "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
   { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  -- Keep the legacy :TSInstall / :TSUpdate commands used by this guide.
+  -- The newer 'main' branch uses a different parser installation API.
+  { "nvim-treesitter/nvim-treesitter", branch = "master", build = ":TSUpdate" },
   { "neovim/nvim-lspconfig" },
-  { "williamboman/mason.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
+  { "mason-org/mason.nvim" },
+  { "mason-org/mason-lspconfig.nvim", dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" } },
   { "hrsh7th/nvim-cmp" },
   { "hrsh7th/cmp-nvim-lsp" },
   { "L3MON4D3/LuaSnip" },
   { "lewis6991/gitsigns.nvim" },
-  { "nvim-tree/nvim-web-devicons" },
+}, {
+  -- No plugins in this guide require LuaRocks. Avoid the missing hererocks
+  -- / luarocks warning by disabling optional rock support.
+  rocks = { enabled = false },
 })
 
 require("mason").setup()
-require'nvim-tree'.setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "lua_ls", "pyright" },
+  automatic_enable = true,
+})
+require("nvim-tree").setup()
 ```
+
+**Why configure Mason-LSPConfig?** Mason downloads tools, but LSP support still needs to be enabled. On Neovim 0.11+, Mason-LSPConfig v2 can automatically enable installed LSP servers. Install more servers via `:Mason` as needed, and use Neovim's modern `vim.lsp.config()` API if you need to customize a server.
+
+**Tree-sitter compatibility:** This guide pins the maintained-for-compatibility `master` branch because its commands match the original guide. If switching to Tree-sitter's newer `main` branch, update parser installation instructions at the same time; don't assume `:TSInstall all` applies there.
 
 ---
 
-#### 7. Enable Gruvbox Theme
+#### 7. Set Up Neovim's Python Provider (Optional)
 
-Add to `~/.config/nvim/init.lua`:
+If `:checkhealth vim.provider` reports that Python cannot `import neovim`, create a dedicated virtual environment rather than installing packages into system Python:
 
-```lua
-vim.cmd("colorscheme gruvbox")
-vim.opt.background = "dark"
+```zsh
+python3 -m venv ~/.local/share/nvim-python
+~/.local/share/nvim-python/bin/python -m pip install --upgrade pynvim
 ```
+
+The `python3_host_prog` setting in step 4 points Neovim at this environment. Restart Neovim and run `:checkhealth vim.provider` to verify.
+
+Ruby and Perl provider warnings are **optional** unless a plugin needs them. Similarly, LuaSnip's `jsregexp` warning only affects advanced snippet placeholder transformations; basic snippets work without it.
 
 ---
 
-#### 8. Launch Neovim
+#### 8. Launch Neovim and Install Plugins
 
-Start Neovim:
-
-```bash
+```zsh
 nvim
 ```
 
-Then run:
+Inside Neovim:
 
 ```vim
 :Lazy sync
 :Mason
 ```
 
-Install your LSPs (e.g. `pyright`, `lua_ls`).
+Mason should now install `lua_ls` and `pyright` from the configuration above. Install additional language servers through `:Mason` as needed. You can open Neovim again after installation to ensure everything loads cleanly.
+
+For the Tree-sitter `master` branch used in this guide, install useful parsers:
+
+```vim
+:TSInstall lua python bash c cpp rust javascript typescript json markdown
+```
+
+If you want every available parser, `:TSInstall all` is also supported by this branch, but it takes more disk space and installation time.
 
 ---
 
-#### Verify Setup
+#### 9. Verify Setup and Troubleshoot
 
-- `<Space>e` → File tree
-- `<Space>ff` → Fuzzy finder
-- `:TSInstall all` → Treesitter parsers
-- `:checkhealth` → Troubleshooting
+Basic features:
+
+- `<Space>e` — File tree
+- `<Space>ff` — Telescope file search
+- `<Space>fg` — Telescope live grep (**requires `rg`**)
+- `:Mason` — Language-server/tool installer
+- `:TSUpdate` — Update Tree-sitter parsers (legacy `master` branch)
+
+Run the relevant health checks:
+
+```vim
+:checkhealth
+:checkhealth nvim-treesitter
+:checkhealth telescope
+:checkhealth mason
+:checkhealth vim.provider
+:checkhealth vim.lsp
+```
+
+Common first-install problems:
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| `ENOENT ... 'tree-sitter'` when running `:TSInstall` | Tree-sitter CLI absent | `brew install tree-sitter-cli`; restart Neovim |
+| Telescope `rg: not found` / live grep fails | Ripgrep absent | `brew install ripgrep` |
+| Telescope `fd: not found` | Optional file finder absent | `brew install fd` |
+| Mason says `node` / `npm` unavailable | Node.js absent or not on PATH | `brew install node`; restart terminal and Neovim |
+| Lazy says `hererocks` / `luarocks` missing | Optional LuaRocks support | Disable rocks as in step 6, unless a plugin needs it |
+| Python provider cannot import `neovim` | `pynvim` missing for chosen Python | Follow step 7 and set `python3_host_prog` |
+| LuaSnip `jsregexp` warning | Optional transformation library | Ignore unless using advanced transformations |
+| No LSP clients shown in an empty buffer | No matching file open, or server not configured | Open a real `.py` or `.lua` file, then run `:checkhealth vim.lsp` or `:LspInfo` |
+
+**Important:** No active LSP clients in an empty buffer is not by itself a problem. To verify attachment, open a Python file within a project, then inspect `:checkhealth vim.lsp`. If there are still no clients, check the server is installed in `:Mason` and that its executable is available.
+
+For Homebrew permission warnings or failed package installations, use `brew doctor` to diagnose the specific issue; do not recursively change ownership of Homebrew or macOS directories as a generic fix.
 
 ---
-
