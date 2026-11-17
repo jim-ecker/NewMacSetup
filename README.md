@@ -94,7 +94,7 @@ In **System Settings** > **Apple Intelligence & Siri**, in the **Siri Requests**
 In **System Settings** > **Desktop & Dock**
 
 - Change
-  - Minimizes windows animation
+  - Minimized windows animation
     - Scale Effect
 - Enable
   - Automatically hide and show the Dock
